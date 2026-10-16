@@ -258,6 +258,38 @@ These files allow the trained models and preprocessing pipeline to be loaded lat
 
 A confusion matrix is not appropriate for this regression task because the model predicts continuous prices rather than classes.
 
+## Prediction Error Analysis
+
+I performed error analysis on the test-set predictions from both Linear Regression and Random Forest.
+
+### Model Performance
+
+| Metric | Linear Regression | Random Forest |
+|---|---:|---:|
+| MAE | $17,553.00 | $15,731.10 |
+| RMSE | $30,216.15 | $26,335.19 |
+| R² Score | 0.89 | 0.91 |
+
+Random Forest performed better overall, with lower MAE and RMSE and a higher R² score.
+
+### Largest Prediction Errors
+
+I identified the 10 houses with the largest absolute prediction errors for each model. House 2181 had the largest error in both models.
+
+- Actual price: $184,750
+- Linear Regression prediction: $540,656.49
+- Linear Regression absolute error: $355,906.49
+- Random Forest prediction: $436,173.81
+- Random Forest absolute error: $251,423.81
+
+### Possible Reasons for Errors
+
+The models may struggle with unusual combinations of property features, limited comparable examples, or sale conditions that are difficult to capture from the available input features. These are possible explanations and require further investigation.
+
+### Conclusion
+
+Random Forest performed better than Linear Regression on the test set, but both models made substantial errors for some properties. Error analysis helps identify these cases and areas for future model improvement.
+
 ## 7. Project Workflow
 
 1. Load and explore the dataset.
